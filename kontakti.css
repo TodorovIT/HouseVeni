@@ -1,0 +1,144 @@
+/* Контейнер за формата */
+.contact-container {
+    background: #fff;
+    padding: 50px;
+    border-radius: 12px;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+a{
+    text-decoration: none;
+    color: #ff0000;
+  }
+/* Заглавие на формата */
+.contact-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 28px;
+}
+
+/* Стилизиране на полетата за въвеждане */
+.input-field {
+    position: relative;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.input-field input,
+.input-field textarea {
+    width: 100%;
+    padding: 20px 16px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    outline: none;
+    transition: 0.3s;
+    box-sizing: border-box;
+    min-height: 50px;
+}
+
+.input-field textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+/* Поставяме лейбъла вътре в полето */
+.input-field label {
+    position: absolute;
+    top: 18px;
+    left: 16px;
+    background-color: #fff;
+    padding: 0 6px;
+    color: #aaa;
+    font-size: 18px;
+    transition: 0.2s;
+    pointer-events: none;
+}
+
+/* Когато полето е фокусирано или съдържа стойност, лейбълът се премества нагоре */
+.input-field input:focus + label,
+.input-field textarea:focus + label,
+.input-field input:not(:placeholder-shown) + label,
+.input-field textarea:not(:placeholder-shown) + label {
+    top: -8px;
+    left: 12px;
+    font-size: 14px;
+    color: #0077cc;
+}
+
+/* Стилове за бутона за изпращане */
+.contact-container button {
+    width: 100%;
+    padding: 20px;
+    font-size: 18px;
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.contact-container button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+.contact-container button:hover:not(:disabled) {
+    background-color: #005fa3;
+}
+
+/* Успешно съобщение след изпращане */
+.success-message {
+    margin-top: 20px;
+    text-align: center;
+    color: green;
+    display: none;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    display: none;
+    margin-top: 5px;
+}
+
+input:invalid {
+    border-color: red;
+}
+
+input:valid {
+    border-color: green;
+}
+
+/* Респонсив дизайн за мобилни устройства */
+@media (max-width: 768px) {
+    .contact-container {
+        padding: 30px;
+        max-width: 90%;
+    }
+
+    .contact-container h2 {
+        font-size: 24px;
+    }
+
+    .input-field input,
+    .input-field textarea {
+        font-size: 16px;
+        padding: 18px 14px;
+        min-height: 55px;
+    }
+
+    .contact-container button {
+        font-size: 16px;
+        padding: 18px;
+    }
+}
+

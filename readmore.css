@@ -1,0 +1,61 @@
+.read-more-wrapper {
+    text-align: center; /* Центрира всичко вътре */
+    margin-top: 20px;
+    font-family: "Poppins", sans-serif;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+.extra{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.856); /* Полупрозрачен черен фон */
+  padding: 10px 20px; /* Малко отстояние около текста */
+  border-radius: 5px; /* Закръглени ръбове */
+  }
+  .extra {
+    display: none;
+    margin-top: 1em;
+    text-align: left;
+  }
+  
+  .dots {
+    display: inline;
+  }
+  
+  input[type="checkbox"] {
+    display: none;
+  }
+  
+  label {
+    display: inline-block;
+    margin-top: 1em;
+    padding: 0.6em 1.4em;
+    background-color: #238528;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 0.5em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  label:hover {
+    background-color: #185a1b;
+  }
+  
+  label::before {
+    content: "Прочети ме";
+  }
+  
+  input[type="checkbox"]:checked + label::before {
+    content: "Затвори ме";
+  }
+  
+  input[type="checkbox"]:checked + label + .dots {
+    display: none;
+  }
+  
+  input[type="checkbox"]:checked + label + .dots + .extra {
+    display: block;
+  }
+  

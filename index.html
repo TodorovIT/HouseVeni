@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Къща за гости Вени</title>
   <link rel="stylesheet" href="new.css">
+  <link rel="stylesheet" href="readmore.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -14,7 +15,10 @@
     <div class="container top-container">
       <h1 class="name">Къща за гости Вени</h1>
 
-      <!-- Добавяме бургер бутона -->
+      <!-- Бутон за смяна на тема -->
+      
+
+      <!-- Бургер бутон -->
       <div class="burger" id="burger-menu">
         <span></span>
         <span></span>
@@ -24,6 +28,7 @@
       <!-- Навигация -->
       <nav id="nav-menu">
         <ul>
+          <li><a href="index.html">Начало</a></li>
           <li><a href="zakushtata.html">За къщата</a></li>
           <li><a href="nastaniavane.html">Настаняване</a></li>
           <li><a href="galeria.html">Галерия</a></li>
@@ -37,17 +42,26 @@
   <div class="hero-section">
     <div class="container">
       <h2 class="hero-title">Добре дошли в нашия уютен дом!</h2>
+
+      <div class="read-more-wrapper">
+        <input type="checkbox" id="btn" />
+        <label for="btn"></label>
+        <span class="dots">...</span>
+        <p class="extra">
+          Живописно разположена в село Шипково в Троянския балкан, Къща за гости Вени е отличен избор за семейна ваканция и почивка с приятели в обкръжението на красивата природа. Тук всеки гост ще открие съвременни удобства и приятна обстановка, предразполагаща към пълноценен отдих на тишина и спокойствие. Къща за гости Вени в Шипково предлага много добри условия за настаняване и всичко необходимо за комфортен самостоятелен престой.
+        </p>
+      </div>
     </div>
   </div>
 
   <footer>
     <div class="container">
-      <p>© 2025 Къща за гости Вени. Всички права запазени.</p>
+      <p>© 2025 Къща за гости Вени. Всички права запазени. Изготвен от <a href="https://github.com/TodorovIT">TodorovIT</p>
     </div>
   </footer>
 </header>
 
-<!-- Скрипта след всичко -->
+<!-- Скрипт -->
 <script src="script.js"></script>
 
 </body>

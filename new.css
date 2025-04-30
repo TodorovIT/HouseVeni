@@ -2,6 +2,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  font-family: "Inter", sans-serif;
 }
 
 .container {
@@ -9,7 +10,10 @@ html, body {
   max-width: 1200px;
   margin: 0 auto;
 }
-
+a{
+  text-decoration: none;
+  color: #ff0000;
+}
 header {
   height: 100vh;
   background-image: url('vila-veni.jpg');
@@ -19,7 +23,10 @@ header {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
+  background-attachment: fixed; /* Това фиксира фона, когато се скролва */
+  z-index: 1;
 }
 
 .top-bar {
@@ -40,28 +47,26 @@ header {
 
 .name {
   font-size: 1.8rem;
-  color: #47A054;
+  color: #238528;
   margin: 0;
 }
 
 nav ul {
   display: flex;
-  gap: 20px;
   list-style: none;
 }
 
 nav a {
-  color: #47A054;
+  color: #238528;
   text-decoration: none;
   font-weight: bold;
   font-size: 1.2rem;
   padding: 5px 10px;
   border-radius: 5px;
-  font-family: 'Roboto', sans-serif;
 }
 
 nav a:hover {
-  background-color: #47A054;
+  background-color: #238528;
   color: white;
 }
 
@@ -92,12 +97,20 @@ nav a:hover {
 .hero-title {
   font-size: 3rem;
   color: white;
-  font-weight: 700; /* Удебелен текст */
   letter-spacing: 2px; /* Леко разстояние между буквите */
   text-transform: uppercase; /* Всички букви ще са главни */
   background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачен черен фон */
   padding: 10px 20px; /* Малко отстояние около текста */
   border-radius: 5px; /* Закръглени ръбове */
+}
+
+.par{
+  text-align:left;
+  font-size: 1.2rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.849); /* Полупрозрачен черен фон */
+  padding: 15px 20px;
+  margin-left: 1200px;
 }
 
 /* Footer */
@@ -146,3 +159,5 @@ footer {
       justify-content: space-between;
   }
 }
+
+

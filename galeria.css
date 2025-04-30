@@ -16,7 +16,10 @@
     transition: transform 0.3s ease;
     object-position: center; /* центриране на снимката вътре в рамката */
   }
-  
+  a{
+    text-decoration: none;
+    color: #ff0000;
+  }
 
   .gallery img:hover {
     transform: scale(1.05);

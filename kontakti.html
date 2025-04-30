@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Къща за гости Вени - Контакти</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="kontakti.css">
 </head>
 <body>
     <header>
@@ -12,22 +13,20 @@
             <div class="container top-container">
               <h1 class="name">Къща за гости Вени</h1>
         
-              <!-- Добавяме бургер бутона -->
               <div class="burger" id="burger-menu">
                 <span></span>
                 <span></span>
                 <span></span>
               </div>
         
-              <!-- Навигация -->
               <nav id="nav-menu">
                 <ul>
+                  <li><a href="index.html">Начало</a></li>
                   <li><a href="zakushtata.html">За къщата</a></li>
                   <li><a href="nastaniavane.html">Настаняване</a></li>
                   <li><a href="galeria.html">Галерия</a></li>
                   <li><a href="zabelejitelnosti.html">Забележителности</a></li>
                   <li><a href="#">Контакти</a></li>
-                  <li><a href="index.html">Начална страница</a></li>
                 </ul>
               </nav>
             </div>
@@ -39,29 +38,60 @@
             </div>
           </div>
     </header>
+
     <section id="contact" class="section"></section>
-        <div class="container">
-            <h2>Контакти</h2>
-            <div class="contact-info">
-                <p><strong>Телефон:</strong> +359 88 655 1111</p>
-                <p><strong>Имейл:</strong> houseveni@abv.bg</p>
-                <p><strong>Адрес:</strong> с. Шипково, Вилна зона, общ. Троян</p>
-            </div>
-            <div class="map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11758.48283629465!2d24.5248302!3d42.8831233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40aa2b3aedd7b425%3A0x3992f248372ae0f6!2sK%C3%BDshta%20za%20gosti%20Veni!5e0!3m2!1sen!2sbg!4v1683308385144!5m2!1sen!2sbg" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-            
+    <div class="container">
+        <h2>Контакти</h2>
+        <div class="contact-info">
+            <p><strong>Телефон:</strong> +359 88 655 1111</p>
+            <p><strong>Имейл:</strong> houseveni@abv.bg</p>
+            <p><strong>Адрес:</strong> с. Шипково, Вилна зона, общ. Троян</p>
+        </div>
+        <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11758.48283629465!2d24.5248302!3d42.8831233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40aa2b3aedd7b425%3A0x3992f248372ae0f6!2sK%C3%BDshta%20za%20gosti%20Veni!5e0!3m2!1sen!2sbg!4v1683308385144!5m2!1sen!2sbg" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+    
+    <br><br>
+    
+    <section class="contact-form-section">
+        <div class="contact-container">
+            <h2>Свържи се с нас</h2>
+            <form id="contactForm">
+                <div class="input-field">
+                    <input type="text" id="name" placeholder=" " required>
+                    <label for="name">Име</label>
+                    <span class="error-message" id="nameError"></span>
+                </div>
+                <div class="input-field">
+                    <input type="email" id="email" placeholder=" " required>
+                    <label for="email">Имейл</label>
+                    <span class="error-message" id="emailError"></span>
+                </div>
+                <div class="input-field">
+                    <input type="tel" id="phone" placeholder=" " required>
+                    <label for="phone">Телефон</label>
+                    <span class="error-message" id="phoneError"></span>
+                </div>
+                <div class="input-field">
+                    <textarea id="message" placeholder=" " required></textarea>
+                    <label for="message">Съобщение</label>
+                </div>
+                <button type="submit" id="submitBtn">Изпрати</button>
+                <p class="success-message" id="successMessage">Съобщението беше изпратено успешно!</p>
+            </form>
         </div>
     </section>
-<br>
-<br>
-<br>
-<button id="back-to-top" title="Back to Top">↑</button>
+    
+    <br><br><br>
+    <button id="back-to-top" title="Back to Top">↑</button>
+    
     <footer>
         <div class="container">
-          <p>© 2025 Къща за гости Вени. Всички права запазени.</p>
+          <p>© 2025 Къща за гости Вени. Всички права запазени. Изготвен от <a href="https://github.com/TodorovIT">TodorovIT</p>
         </div>
-      </footer>
-      <script src="script.js"></script>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
