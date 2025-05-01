@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       // Ако сме на дъното на страницата — правим бутона полупрозрачен
-      if (scrollTop + windowHeight >= fullHeight - 30) {
+      if (scrollTop + windowHeight >= fullHeight - 33) {
           backToTopButton.style.opacity = '0.3';
       } else {
           backToTopButton.style.opacity = '1';
