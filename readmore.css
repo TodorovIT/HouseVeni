@@ -44,11 +44,11 @@
   }
   
   label::before {
-    content: "Прочети ме";
+    content: "Информация";
   }
   
   input[type="checkbox"]:checked + label::before {
-    content: "Затвори ме";
+    content: "Затвори";
   }
   
   input[type="checkbox"]:checked + label + .dots {
