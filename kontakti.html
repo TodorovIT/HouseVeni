@@ -55,33 +55,28 @@
     <br><br>
     
     <section class="contact-form-section">
-        <div class="contact-container">
-            <h2>Свържи се с нас</h2>
-            <form id="contactForm">
-                <div class="input-field">
-                    <input type="text" id="name" placeholder=" " required>
-                    <label for="name">Име</label>
-                    <span class="error-message" id="nameError"></span>
-                </div>
-                <div class="input-field">
-                    <input type="email" id="email" placeholder=" " required>
-                    <label for="email">Имейл</label>
-                    <span class="error-message" id="emailError"></span>
-                </div>
-                <div class="input-field">
-                    <input type="tel" id="phone" placeholder=" " required>
-                    <label for="phone">Телефон</label>
-                    <span class="error-message" id="phoneError"></span>
-                </div>
-                <div class="input-field">
-                    <textarea id="message" placeholder=" " required></textarea>
-                    <label for="message">Съобщение</label>
-                </div>
-                <button type="submit" id="submitBtn">Изпрати</button>
-                <p class="success-message" id="successMessage">Съобщението беше изпратено успешно!</p>
-            </form>
-        </div>
+      <div class="contact-container">
+        <h2>Свържи се с нас</h2>
+        <form action="https://getform.io/f/bxoywvga" method="POST">
+          <div class="input-field">
+            <input type="text" name="name" id="name" required autocomplete="off" />
+            <label for="name">Вашето име</label>
+          </div>
+          <div class="input-field">
+            <input type="email" name="email" id="email" required autocomplete="off" />
+            <label for="email">Вашият имейл</label>
+          </div>
+          <div class="input-field">
+            <textarea name="message" id="message" rows="4" required autocomplete="off"></textarea>
+            <label for="message">Вашето съобщение</label>
+          </div>
+          <input type="hidden" name="_gotcha" style="display:none !important" />
+          <button type="submit">Изпрати</button>
+        </form>
+      </div>
     </section>
+    
+    
     
     <br><br><br>
     <button id="back-to-top" title="Back to Top">↑</button>

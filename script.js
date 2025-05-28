@@ -248,3 +248,229 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const images = Array.from(document.querySelectorAll('.gallery img'));
+  const overlay = document.getElementById('overlay');
+  const overlayImg = document.getElementById('overlay-img');
+  const closeBtn = document.getElementById('closeBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const prevBtn = document.getElementById('prevBtn');
+  let currentIndex = 0;
+
+  let scale = 1;
+  let currentX = 0;
+  let currentY = 0;
+  let isDragging = false;
+  let dragStartX = 0;
+  let dragStartY = 0;
+
+  function updateTransform() {
+    overlayImg.style.transform = `translate(${currentX}px, ${currentY}px) scale(${scale})`;
+  }
+
+  function resetTransform(animated = true) {
+    if (animated) {
+      overlayImg.style.transition = 'transform 0.3s ease';
+    } else {
+      overlayImg.style.transition = 'none';
+    }
+    scale = 1;
+    currentX = 0;
+    currentY = 0;
+    updateTransform();
+    if (animated) {
+      // Премахваме transition след края му
+      overlayImg.addEventListener('transitionend', function handler() {
+        overlayImg.style.transition = 'none';
+        overlayImg.removeEventListener('transitionend', handler);
+      });
+    }
+  }
+
+  function showImage(index) {
+    if (index >= 0 && index < images.length) {
+      currentIndex = index;
+      overlayImg.src = images[currentIndex].src;
+      overlay.classList.add('active');
+
+      resetTransform(false);
+
+      prevBtn.style.display = (currentIndex === 0) ? 'none' : 'block';
+      nextBtn.style.display = (currentIndex === images.length - 1) ? 'none' : 'block';
+
+      // Блокираме скрола на body, докато overlay е отворен
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeOverlay() {
+    overlay.classList.remove('active');
+    overlayImg.src = '';
+    resetTransform(false);
+    // Възстановяваме скрола на body
+    document.body.style.overflow = '';
+  }
+
+  images.forEach((img, index) => {
+    img.addEventListener('click', () => {
+      showImage(index);
+    });
+  });
+
+  closeBtn?.addEventListener('click', () => {
+    closeOverlay();
+  });
+
+  overlay?.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      closeOverlay();
+    }
+  });
+
+  nextBtn?.addEventListener('click', () => {
+    showImage((currentIndex + 1) % images.length);
+  });
+
+  prevBtn?.addEventListener('click', () => {
+    showImage((currentIndex - 1 + images.length) % images.length);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!overlay.classList.contains('active')) return;
+    if (e.key === 'ArrowRight') nextBtn.click();
+    if (e.key === 'ArrowLeft') prevBtn.click();
+    if (e.key === 'Escape') closeBtn.click();
+  });
+
+  // --- Драг с мишка ---
+
+  overlayImg.addEventListener('mousedown', (e) => {
+    e.preventDefault();
+    isDragging = true;
+    dragStartX = e.clientX - currentX;
+    dragStartY = e.clientY - currentY;
+    overlayImg.style.cursor = 'grabbing';
+  });
+
+  window.addEventListener('mouseup', () => {
+    isDragging = false;
+    overlayImg.style.cursor = 'grab';
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    currentX = e.clientX - dragStartX;
+    currentY = e.clientY - dragStartY;
+    updateTransform();
+  });
+
+  // --- Драг с пръст (за телефони) ---
+
+  let lastTouchX = 0;
+  let lastTouchY = 0;
+  let isTouchDragging = false;
+
+  overlayImg.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) {
+      isTouchDragging = true;
+      lastTouchX = e.touches[0].clientX - currentX;
+      lastTouchY = e.touches[0].clientY - currentY;
+    }
+  }, { passive: false });
+
+  overlayImg.addEventListener('touchmove', (e) => {
+    if (!isTouchDragging) return;
+    if (e.touches.length !== 1) return;
+    e.preventDefault();
+    currentX = e.touches[0].clientX - lastTouchX;
+    currentY = e.touches[0].clientY - lastTouchY;
+    updateTransform();
+  }, { passive: false });
+
+  overlayImg.addEventListener('touchend', (e) => {
+    if (e.touches.length === 0) {
+      isTouchDragging = false;
+    }
+  });
+
+  // --- Zoom с колелце и с пинч (пръсти) ---
+
+  // Колелце за zoom компютър
+  overlay.addEventListener('wheel', (e) => {
+    e.preventDefault();
+
+    const zoomIntensity = 0.1;
+    const delta = -e.deltaY || e.wheelDelta;
+
+    let prevScale = scale;
+
+    if (delta > 0) {
+      scale += zoomIntensity;
+    } else {
+      scale -= zoomIntensity;
+      if (scale < 1) {
+        scale = 1;
+      }
+    }
+    scale = Math.min(Math.max(1, scale), 5);
+
+    // Плавно приближаваме към центъра при zoom out
+    if (scale < prevScale) {
+      const approachFactor = 0.2;
+      currentX = currentX - currentX * approachFactor;
+      currentY = currentY - currentY * approachFactor;
+    }
+
+    updateTransform();
+  }, { passive: false });
+
+  // Пинч за zoom телефон
+  let initialPinchDistance = null;
+  let initialScale = 1;
+
+  overlay.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 2) {
+      e.preventDefault();
+      initialPinchDistance = getDistance(e.touches[0], e.touches[1]);
+      initialScale = scale;
+    }
+  }, { passive: false });
+
+  overlay.addEventListener('touchmove', (e) => {
+    if (e.touches.length === 2 && initialPinchDistance !== null) {
+      e.preventDefault();
+      const currentDistance = getDistance(e.touches[0], e.touches[1]);
+      let newScale = initialScale * (currentDistance / initialPinchDistance);
+
+      newScale = Math.min(Math.max(1, newScale), 5);
+
+      // При zoom out плавно приближаваме към центъра
+      if (newScale < scale) {
+        const approachFactor = 0.2;
+        currentX = currentX - currentX * approachFactor;
+        currentY = currentY - currentY * approachFactor;
+      }
+
+      scale = newScale;
+      updateTransform();
+    }
+  }, { passive: false });
+
+  overlay.addEventListener('touchend', (e) => {
+    if (e.touches.length < 2) {
+      initialPinchDistance = null;
+    }
+  });
+
+  function getDistance(touch1, touch2) {
+    const dx = touch2.clientX - touch1.clientX;
+    const dy = touch2.clientY - touch1.clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+  }
+});

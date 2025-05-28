@@ -1,4 +1,3 @@
-/* Контейнер за формата */
 .contact-container {
     background: #fff;
     padding: 50px;
@@ -11,11 +10,7 @@
     flex-direction: column;
     align-items: center;
 }
-a{
-    text-decoration: none;
-    color: #ff0000;
-  }
-/* Заглавие на формата */
+
 .contact-container h2 {
     text-align: center;
     margin-bottom: 30px;
@@ -23,57 +18,61 @@ a{
     font-size: 28px;
 }
 
-/* Стилизиране на полетата за въвеждане */
 .input-field {
     position: relative;
-    margin-bottom: 30px;
     width: 100%;
+    margin-bottom: 30px;
 }
 
 .input-field input,
 .input-field textarea {
     width: 100%;
-    padding: 20px 16px;
+    padding: 20px 16px 20px 16px;
     font-size: 18px;
     border: 1px solid #ccc;
     border-radius: 8px;
     background: #fff;
     outline: none;
-    transition: 0.3s;
     box-sizing: border-box;
-    min-height: 50px;
+    resize: vertical;
+    transition: border-color 0.3s;
+}
+
+.input-field input:focus,
+.input-field textarea:focus {
+    border-color: #0077cc;
 }
 
 .input-field textarea {
-    resize: vertical;
     min-height: 150px;
 }
 
-/* Поставяме лейбъла вътре в полето */
+/* Плаващ етикет */
 .input-field label {
     position: absolute;
-    top: 18px;
+    top: 20px;
     left: 16px;
     background-color: #fff;
     padding: 0 6px;
     color: #aaa;
     font-size: 18px;
-    transition: 0.2s;
     pointer-events: none;
+    transition: 0.2s ease all;
 }
 
-/* Когато полето е фокусирано или съдържа стойност, лейбълът се премества нагоре */
+/* Когато input или textarea е в фокус или има съдържание - мърда нагоре */
 .input-field input:focus + label,
 .input-field textarea:focus + label,
 .input-field input:not(:placeholder-shown) + label,
 .input-field textarea:not(:placeholder-shown) + label {
-    top: -8px;
+    top: -10px;
     left: 12px;
     font-size: 14px;
     color: #0077cc;
+    font-weight: 600;
 }
 
-/* Стилове за бутона за изпращане */
+/* Бутон за изпращане */
 .contact-container button {
     width: 100%;
     padding: 20px;
@@ -86,36 +85,11 @@ a{
     transition: background 0.3s ease;
 }
 
-.contact-container button:disabled {
-    background-color: #aaa;
-    cursor: not-allowed;
-}
-
-.contact-container button:hover:not(:disabled) {
+.contact-container button:hover {
     background-color: #005fa3;
 }
 
-/* Успешно съобщение след изпращане */
-.success-message {
-    margin-top: 20px;
-    text-align: center;
-    color: green;
-    display: none;
-}
-
-.error-message {
-    color: red;
-    font-size: 14px;
-    display: none;
-    margin-top: 5px;
-}
-
-
-input:valid {
-    border-color: green;
-}
-
-/* Респонсив дизайн за мобилни устройства */
+/* Респонсив */
 @media (max-width: 768px) {
     .contact-container {
         padding: 30px;
@@ -130,7 +104,6 @@ input:valid {
     .input-field textarea {
         font-size: 16px;
         padding: 18px 14px;
-        min-height: 55px;
     }
 
     .contact-container button {
@@ -138,4 +111,3 @@ input:valid {
         padding: 18px;
     }
 }
-
