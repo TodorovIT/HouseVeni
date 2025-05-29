@@ -1,12 +1,11 @@
 .hero-title {
-    font-size: 3rem; /* по подразбиране – 6% от ширината на екрана */
-    text-align: center;
-    margin: 0;
-    padding: 10px 20px;
-    font-weight: bold;
+  font-size: 3rem;
+  text-align: center;
+  padding: 10px 20px;
+  font-weight: bold;
 }
 
-a{
+.asd {
   color: #0ebb17;
 }
 
@@ -21,28 +20,32 @@ a{
 
 .attraction {
   display: flex;
-  flex-direction: row;
+  align-items: stretch;
   gap: 30px;
-  align-items: flex-start;
-  flex-wrap: wrap;
   background-color: #f9f9f9;
   padding: 25px;
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  flex-wrap: nowrap;
 }
 
 .attraction-img {
   width: 400px;
-  height: 240px;
+  height: 250px;
   object-fit: cover;
-  cursor: pointer;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  flex-shrink: 0;
   transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
 .attraction-text {
-  flex: 2 1 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  padding: 10px 0;
 }
 
 .attraction-text h3 {
@@ -55,27 +58,28 @@ a{
   font-size: 1rem;
   color: #444;
   line-height: 1.6;
-}
-
-.lightbox-img {
-  max-width: 60%;
-  max-height: 60%;
-  display: block;
-  margin: auto;
-  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 #lightbox-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
   display: none;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+}
+
+#lightbox-img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 10px;
+  animation: zoomIn 0.4s ease;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
 }
 
 #lightbox-close {
@@ -94,76 +98,56 @@ a{
 }
 
 @keyframes zoomIn {
-  0% {
+  from {
     transform: scale(0.6);
     opacity: 0;
   }
-  100% {
+  to {
     transform: scale(1);
     opacity: 1;
   }
 }
 
-#lightbox-img {
-  max-width: 60%;
-  max-height: 60%;
-  border-radius: 10px;
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
-  animation: zoomIn 0.4s ease;
-}
-
-
-
-/* Настройки за по-малки екрани */
+/* Мобилна версия */
 @media (max-width: 768px) {
-    .hero-title {
-        font-size: 8vw;
-    }
-    .attraction {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-  
-    .attraction-text {
-      text-align: left;
-      width: 100%;
-    }
-}
+  .hero-title {
+    font-size: 8vw;
+  }
 
-/* Настройки за по-големи екрани */
-@media (min-width: 1200px) {
-    .hero-title {
-        font-size: 3rem;
-    }
-}
+  .attraction {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+  }
 
-/* Гъвкава промяна на шрифта в зависимост от ширината */
-@media (max-width: 1200px) {
-    nav a {
-      font-size: 1.1rem;
-      padding: 5px 8px;
-    }
+  .attraction-img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
   }
-  
-  @media (max-width: 1100px) {
-    nav a {
-      font-size: 1rem;
-      padding: 5px 7px;
-    }
+
+  .attraction-text {
+    padding-top: 15px;
+    text-align: left;
   }
-  
-  @media (max-width: 1000px) {
-    nav a {
-      font-size: 0.9rem;
-      padding: 5px 6px;
-    }
+
+  .attraction-text h3 {
+    font-size: 1.5rem;
   }
-  
-  @media (max-width: 950px) {
-    nav a {
-      font-size: 0.85rem;
-      padding: 4px 5px;
-    }
+
+  .attraction-text p {
+    font-size: 1rem;
   }
-  
+
+  #lightbox-img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  #lightbox-close {
+    font-size: 2rem;
+    top: 10px;
+    right: 15px;
+  }
+}

@@ -64,7 +64,7 @@
                         на Пламен Бояджиев и семейство Дисански. Дочо Белякът е преселник
                         от Беломорието, първоначално се заселва в Троян, а по-късно идва
                         и се установява със семейството си в Шипково.</p>
-                        <p>Виж на картата от <a href="https://maps.app.goo.gl/vgQCsD8mnkPpoDc5A">ТУК</a></p>
+                        <p>Виж на картата от <a class="asd" href="https://maps.app.goo.gl/vgQCsD8mnkPpoDc5A">ТУК</a></p>
                 </div>
             </div>
 
@@ -82,7 +82,7 @@
                         който след няколко години се разраства и става един от най-големите
                         в Северна България. Той става място за срещи между майстори от
                         всички краища на България.</p>
-                        <p>Виж на картата от <a href="https://maps.app.goo.gl/5ysovZSdaGfoZqcH9">ТУК</a></p>
+                        <p>Виж на картата от <a class="asd" href="https://maps.app.goo.gl/5ysovZSdaGfoZqcH9">ТУК</a></p>
                 </div>
             </div>
 
@@ -107,7 +107,7 @@
                         изложението. При обновяването са използвани традиционни местни
                         елементи и материали с цел запазване характерния архитектурен образ
                         на сградите.</p>
-                        <p>Виж на картата от <a href="https://maps.app.goo.gl/J3Ti2Ybu6tH4PP3fA">ТУК</a></p>
+                        <p>Виж на картата от <a class="asd" href="https://maps.app.goo.gl/J3Ti2Ybu6tH4PP3fA">ТУК</a></p>
                 </div>
             </div>
 
@@ -130,7 +130,7 @@
                         завива на запад в северната част на Троян, на 371 m н.в. се слива
                         с идващата отляво река Бели Осъм и заедно дават началото на
                         същинската река Осъм.</p>
-                        <p>Виж на картата от <a href="https://maps.app.goo.gl/dREjEMTVX3XGS1jA9">ТУК</a></p>
+                        <p>Виж на картата от <a class="asd" href="https://maps.app.goo.gl/dREjEMTVX3XGS1jA9">ТУК</a></p>
                 </div>
             </div>
         </div>
@@ -147,40 +147,31 @@
         </div>
       </footer>
 
-    <script>
-        const lightboxOverlay = document.getElementById('lightbox-overlay');
-        const lightboxImg = document.getElementById('lightbox-img');
-        const lightboxClose = document.getElementById('lightbox-close');
-
-        lightboxClose.addEventListener('click', () => {
-            lightboxOverlay.style.display = 'none';
-            lightboxImg.src = '';
-        });
-
-
+      <script>
+        const overlay = document.getElementById('lightbox-overlay');
+        const img = document.getElementById('lightbox-img');
+        const close = document.getElementById('lightbox-close');
+    
         document.querySelectorAll('.lightbox').forEach(link => {
-            link.addEventListener('click', e => {
-                e.preventDefault();
-                lightboxImg.src = link.href;
-                lightboxOverlay.style.display = 'flex';
-            });
-        });
-
-        lightboxOverlay.addEventListener('click', () => {
-            lightboxOverlay.style.display = 'none';
-            lightboxImg.src = '';
-        });
-
-        image.addEventListener('click', () => {
-            lightboxImg.classList.remove('lightbox-img'); // премахва и ре-добавя класа за рестарт
-            void lightboxImg.offsetWidth; // трик за рестартиране на анимацията
-            lightboxImg.classList.add('lightbox-img');
-          
-            lightboxOverlay.style.display = 'flex';
-            lightboxImg.src = image.src;
+          link.addEventListener('click', e => {
+            e.preventDefault();
+            img.src = link.href;
+            overlay.style.display = 'flex';
           });
-          
-    </script>
+        });
+    
+        close.addEventListener('click', () => {
+          overlay.style.display = 'none';
+          img.src = '';
+        });
+    
+        overlay.addEventListener('click', e => {
+          if (e.target === overlay || e.target === close) {
+            overlay.style.display = 'none';
+            img.src = '';
+          }
+        });
+      </script>
 
     <script>
         const startYear = 2025;
