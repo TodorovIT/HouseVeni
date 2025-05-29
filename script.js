@@ -149,11 +149,6 @@ document.addEventListener('DOMContentLoaded', function () {
     return "";
   }
 
-  // Валидатор за телефон
-  const phonePattern = /^[0-9]{10}$/; // Телефон с точно 10 цифри
-  function validatePhone(phone) {
-    return phonePattern.test(phone) ? "" : "Телефонът трябва да съдържа точно 10 цифри.";
-  }
 
   // Превенция на букви при въвеждане на телефон
   phoneInput.addEventListener('input', function (e) {
@@ -248,6 +243,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
+
+
 
 
 

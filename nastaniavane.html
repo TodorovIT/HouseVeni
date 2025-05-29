@@ -41,6 +41,9 @@
     </header>
     <section id="accommodation" class="section"></section>
         <div class="container">
+          <br>
+          <br>
+          <br>
             <h2>Настаняване</h2>
             <p><b>Къща за гости Вени</b> разполага с 28 места за нощувка:
                 <p>- 6 двойни стаи  с отделен  санитарен възел</p>
@@ -81,12 +84,25 @@
 <br>
 <br>
 <button id="back-to-top" title="Back to Top">↑</button>
-    <footer>
-        <div class="container">
-          <p>© 2025 Къща за гости Вени. Всички права са запазени. Изготвен от <a href="https://github.com/TodorovIT">TodorovIT</p>
-        </div>
-      </footer>
-      
+<footer>
+  <div class="container">
+    <p>© <span id="copyright-year"></span> Къща за гости Вени. Всички права са запазени. Изготвен от <a href="https://github.com/TodorovIT">TodorovIT</a></p>
+
+  </div>
+</footer>
+
+<script>
+  const startYear = 2025;
+  function updateCopyright() {
+    const currentYear = new Date().getFullYear();
+    const display = (currentYear > startYear) ? `${startYear} – ${currentYear}` : `${startYear}`;
+    document.getElementById('copyright-year').textContent = display;
+  }
+
+  updateCopyright();
+  setInterval(updateCopyright, 60000);
+</script>
+
       <script src="script.js"></script>
 </body>
 </html>

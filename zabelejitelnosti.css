@@ -6,10 +6,128 @@
     font-weight: bold;
 }
 
+a{
+  color: #0ebb17;
+}
+
+#attractions .container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.attraction {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  background-color: #f9f9f9;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+.attraction-img {
+  width: 400px;
+  height: 240px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+.attraction-text {
+  flex: 2 1 500px;
+}
+
+.attraction-text h3 {
+  margin-top: 0;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.attraction-text p {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+.lightbox-img {
+  max-width: 60%;
+  max-height: 60%;
+  display: block;
+  margin: auto;
+  border-radius: 10px;
+}
+
+#lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 3rem;
+  color: white;
+  cursor: pointer;
+  z-index: 1001;
+  transition: transform 0.2s ease;
+}
+
+#lightbox-close:hover {
+  transform: scale(1.2);
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+#lightbox-img {
+  max-width: 60%;
+  max-height: 60%;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+  animation: zoomIn 0.4s ease;
+}
+
+
+
 /* Настройки за по-малки екрани */
 @media (max-width: 768px) {
     .hero-title {
         font-size: 8vw;
+    }
+    .attraction {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .attraction-text {
+      text-align: left;
+      width: 100%;
     }
 }
 
